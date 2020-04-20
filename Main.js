@@ -64,3 +64,12 @@ function copyHtml() {
         alert("Failed to copy the text to clipboard!");
     });
 }
+
+function clearAll() {
+    const previewPanel = document.getElementById("previewPanel");
+    previewPanel.innerHTML = "";
+    const htmlPre = document.getElementById("htmlContent");
+    htmlPre.textContent = "";
+    document.getElementById("input").value = "";
+}
+
