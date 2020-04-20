@@ -2,50 +2,53 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8"/>
-	<title>Paste SQL Management Studio query results as HTML table</title>
+	<title>Paste SQL Server Management Studio query results as HTML table</title>
 	<link href="Main.css" rel="stylesheet"/>
 	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script>
 	<script src="Main.js"></script>
 </head>
 <body>
-<h2>Convert SQL Management Studio query results to HTML table</h2>
-<a href="https://github.com/SanderSade/SqlManagementStudio.PasteAsHtml" id="repoLink">&lArr;&nbsp;Go to repository</a>
-<div class="textwrapper">
-	<textarea rows="20" id="input" class="monospace" placeholder="Paste the output here">
+	<h2>Convert SQL Server Management Studio query results to HTML table</h2>
+	<a href="https://github.com/SanderSade/SqlManagementStudio.PasteAsHtml" id="repoLink">&lArr;&nbsp;Go to repository</a>
+	<div class="textwrapper">
+		<textarea rows="20" id="input" class="monospace" placeholder="Paste the output here">
 </textarea>
-</div>
-<label for="hasHeader" id="hasHeaderLegend"><input type="checkbox" name="hasHeader" id="hasHeader" checked="checked"/>&nbsp;Output has headers</label>
-<br/>
-<button onclick="generateHtml()" class="button" id="generateButton">Generate HTML table</button>
-&nbsp;<button onclick="copyHtml()" class="button" id="copyButton">Copy HTML to clipboard</button><span id="copy-message">Copied to clipboard</span>
-<button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
-<br/>
-
-
-<div class="resultWrapper">
-	<input class="radio" id="one" name="group" type="radio" checked>
-	<input class="radio" id="two" name="group" type="radio">
-	<div class="tabs">
-		<label class="tab" id="previewTab" for="one">Preview</label>
-		<label class="tab" id="htmlTab" for="two">HTML code</label>
 	</div>
-	<div class="panels">
-		<div class="panel" id="previewPanel">
-			&nbsp;
-		</div>
-		<div class="panel" id="htmlPanel">
-			<pre class="prettyprint lang-html" id="htmlContent" lang="HTML">&nbsp;</pre>
-		</div>
+	<label for="hasHeader" id="hasHeaderLegend"><input type="checkbox" name="hasHeader" id="hasHeader" checked="checked" />&nbsp;Output has headers</label>
+	<br />
+	<button onclick="generateHtml()" class="button" id="generateButton">Generate HTML table</button>
+	&nbsp;<button onclick="copyHtml()" class="button" id="copyButton">Copy HTML table to clipboard</button>
+	&nbsp;<button onclick="copyHtmlCode()" class="button" id="copyCodeButton">Copy HTML code to clipboard</button>
 
+	<span id="copy-message">Copied to clipboard</span>
+	<button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
+	<br />
+
+
+	<div class="resultWrapper">
+		<input class="radio" id="one" name="group" type="radio" checked>
+		<input class="radio" id="two" name="group" type="radio">
+		<div class="tabs">
+			<label class="tab" id="previewTab" for="one">Preview</label>
+			<label class="tab" id="htmlTab" for="two">HTML code</label>
+		</div>
+		<div class="panels">
+			<div class="panel" id="previewPanel">
+				&nbsp;
+			</div>
+			<div class="panel" id="htmlPanel">
+				<pre class="prettyprint lang-html" id="htmlContent" lang="HTML">&nbsp;</pre>
+			</div>
+
+		</div>
 	</div>
-</div>
-<script>
-	const observer = new MutationObserver(() => {
-		window.PR.prettyPrint();
-	});
-	observer.observe(document.getElementById("htmlContent"),
-		{ attributes: true, childList: true, subtree: true, characterData: true });
-</script>
+	<script>
+		const observer = new MutationObserver(() => {
+			window.PR.prettyPrint();
+		});
+		observer.observe(document.getElementById("htmlContent"),
+			{ attributes: true, childList: true, subtree: true, characterData: true });
+	</script>
 </body>
 
 </html>

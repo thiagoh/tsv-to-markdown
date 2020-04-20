@@ -163,7 +163,7 @@ table thead { background-color: rgb(255, 253, 247); }
 }
 
 .copy-message-animation {
-    animation: fadeOut 2s forwards;
+    animation: fadeOut 3s forwards;
     animation-delay: 0;
     opacity: 1;
 }

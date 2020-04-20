@@ -53,16 +53,30 @@
     htmlPre.textContent = output;
 }
 
+function showCopied() {
+    var c = document.getElementById("copy-message");
+    c.classList.remove("copy-message-animation");
+    setTimeout(() => c.classList.add("copy-message-animation"), 100);
+}
 
-
-function copyHtml() {
+function copyHtmlCode() {
     navigator.clipboard.writeText(document.getElementById("htmlContent").textContent).then(function() {
-        var c = document.getElementById("copy-message");
-        c.classList.remove("copy-message-animation");
-        setTimeout(() => c.classList.add("copy-message-animation"), 100);
+        showCopied();
     }, function() {
         alert("Failed to copy the text to clipboard!");
     });
+}
+
+
+function copyHtml() {
+    let element = document.getElementById("previewPanel");
+    window.getSelection().removeAllRanges();
+    let range = document.createRange();
+    range.selectNode(typeof element === 'string' ? document.getElementById(element) : element);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    showCopied();
 }
 
 function clearAll() {
