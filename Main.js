@@ -32,7 +32,7 @@
         split.shift();
     }
 
-
+    output += "\r\n <tbody>";
     split.forEach(row => {
         if (!row || row.trim().length < 1)
             return true;
@@ -45,6 +45,7 @@
         output += "\r\n  </tr>";
         return true;
     });
+    output += "\r\n </tbody>";
     output += "\r\n</table>";
 
     previewPanel.innerHTML = output;
