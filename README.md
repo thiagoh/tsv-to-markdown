@@ -10,7 +10,7 @@ This projects takes the output from SQL Management Studio query results (right c
 
 ### Features
 * Does not send any data to backend/server, pure HTML/CSS/JS frontend functionality 
-* Supports headers
+* Supports table headers
 * Automatically encodes HTML critical entities to avoid script injection or display issues
 * Copy results either as HTML table code suitable for web pages or as HTML element for pasting into rich text clients
 
