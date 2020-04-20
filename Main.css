@@ -141,14 +141,14 @@ table {
     border-style: solid;
     border-width: 1px;
     color: #000000;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 table td, table th {
     border-color: #5774AB;
     border-style: solid;
     border-width: 1px;
-    padding: 3px;
+    padding: 5px;
 }
 
 table thead { background-color: rgb(255, 253, 247); }
