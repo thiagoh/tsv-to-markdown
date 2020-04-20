@@ -12,6 +12,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SqlManagementStudio.PasteAs
 		SlnRelativePath = "..\SqlManagementStudio.PasteAsHtml\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AD34485-5C59-47B2-B921-C5D24BA5C47A}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
