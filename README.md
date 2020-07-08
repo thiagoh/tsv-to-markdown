@@ -13,6 +13,7 @@ This projects takes the output from SQL Management Studio query results (right c
 * Supports table headers
 * Automatically encodes HTML critical entities to avoid script injection or display issues
 * Copy results either as HTML table code suitable for web pages or as HTML element for pasting into rich text clients
+* Works also with direct copy-paste from Excel
 
 Click on image for larger screenshots
 
