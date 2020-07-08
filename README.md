@@ -20,3 +20,8 @@ Click on image for larger screenshots
 ![image](https://user-images.githubusercontent.com/18664267/79770226-cdf34900-8335-11ea-8422-a1eb21eb84ca.png)
 
 ![image](https://user-images.githubusercontent.com/18664267/79770365-f9763380-8335-11ea-8cca-fb63f1a5af39.png)
+
+### Copy-paste from [Excel](https://go.microsoft.com/fwlink/?LinkID=521962)
+![image](https://user-images.githubusercontent.com/18664267/86928526-53b8b080-c13d-11ea-9581-c162cb114485.png)
+
+![image](https://user-images.githubusercontent.com/18664267/86928631-7ba81400-c13d-11ea-9a45-037781ed9235.png)
