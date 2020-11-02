@@ -84,8 +84,9 @@ body {
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    margin: 0 2px;
-    padding: 10px 20px;
+    margin: 2px;
+    padding: 6px 16px;
+    min-width: 220px;
 }
 
 
@@ -93,6 +94,10 @@ body {
 
 
 .button:active, .tab:active { color: red; }
+
+.button.copy {
+    background: #2f4f4f;
+}
 
 .panels {
     background: #fffffff6;
@@ -123,9 +128,20 @@ body {
     box-sizing: border-box;
     display: block;
 }
+#three:checked ~ .panels #mdPanel {
+    box-sizing: border-box;
+    display: block;
+}
+
+
 
 #one:checked ~ .tabs #previewTab,
 #two:checked ~ .tabs #htmlTab {
+    background: #fffffff6;
+    border-top: 3px solid #000;
+    color: #000;
+}
+#three:checked ~ .tabs #mdTab {
     background: #fffffff6;
     border-top: 3px solid #000;
     color: #000;
@@ -141,7 +157,6 @@ table {
     border-style: solid;
     border-width: 1px;
     color: #000000;
-    /*width: 100%;*/
 }
 
 table td, table th {
@@ -188,8 +203,4 @@ a:hover {
     position: absolute;
     top: 10px;
     left: 10px;
-}
-
-#clearAll {
-    float: right;
 }

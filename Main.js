@@ -1,4 +1,79 @@
-﻿function generateHtml() {
+﻿function getParsed() {
+    return {
+        hasHeaders: document.querySelector('#hasHeader:checked'),
+        split:  document.getElementById("input").value.split(/\r?\n/)
+    };
+}
+
+var htmlTimeout, mdTimeout;
+
+function delayedGeneration() {
+    clearTimeout(htmlTimeout);
+    clearInterval(mdTimeout);
+    htmlTimeout = setTimeout(generateHtml, 100);
+    mdTimeout = setTimeout(generateMd, 1000);
+}
+
+
+function generateMd() {
+
+    function escapeMd(str) {
+        str = str.replace(/\*/g, "\\*");
+        str = str.replace(/_/g, "\\_");
+        str = str.replace(/}/g, "\\}");
+        str = str.replace(/{/g, "\\{");
+        str = str.replace(/\[/g, "\\[");
+        str = str.replace(/]/g, "\\]");
+        str = str.replace(/\(/g, "\\(");
+        str = str.replace(/\)/g, "\\)");
+        str = str.replace(/-/g, "\\-");
+        str = str.replace(/\+/g, "\\+");
+        str = str.replace(/#/g, "\\#");
+        str = str.replace(/\./g, "\\.");
+        str = str.replace(/!/g, "\\!");
+
+        return str;
+    }
+
+    const mdPre = document.getElementById("mdContent");
+    mdPre.textContent = "";
+
+    const parsed = getParsed();
+    var output = "";
+
+    if (parsed.hasHeaders != undefined) {
+        const tds = parsed.split[0].split(/\t/);
+        output += "| ";
+        var line = "| ";
+        tds.forEach(element => {
+            var escaped = escapeMd(element);
+            output += `${escaped} | `;
+            line += "-".repeat(escaped.length) + " | ";
+        });
+
+        output = output.trim();
+        output += `\r\n${line.trim()}`;
+        parsed.split.shift();
+    }
+
+
+    parsed.split.forEach(row => {
+        if (!row || row.trim().length < 1)
+            return true;
+        var tds = row.split(/\t/);
+        output += "\r\n| ";
+        tds.forEach(element => {
+            output += `${escapeMd(element)} | `;
+        });
+        return true;
+    });
+
+
+    mdPre.textContent = output.trim();
+}
+
+
+function generateHtml() {
 
     function convert(str)
     {
@@ -10,36 +85,35 @@
         return str;
     }
 
+
     const previewPanel = document.getElementById("previewPanel");
     previewPanel.innerHTML = "";
     const htmlPre = document.getElementById("htmlContent");
     htmlPre.textContent = "";
 
-    const hasHeaders = document.querySelector('#hasHeader:checked');
-    const text = document.getElementById("input").value;
-    const split = text.split(/\r?\n/);
+    const parsed = getParsed();
 
     var output = "<table>";
-    if (hasHeaders != undefined) {
+    if (parsed.hasHeaders != undefined) {
         output += "\r\n <thead>\r\n  <tr>";
-        const tds = split[0].split(/\t/);
+        const tds = parsed.split[0].split(/\t/);
 
         tds.forEach(element => {
-            output += "\r\n\   <th>" + convert(element) + "</th>";
+            output += `\r\n\   <th>${convert(element)}</th>`;
         });
 
         output += "\r\n\  </tr>\r\n </thead>";
-        split.shift();
+        parsed.split.shift();
     }
 
     output += "\r\n <tbody>";
-    split.forEach(row => {
+    parsed.split.forEach(row => {
         if (!row || row.trim().length < 1)
             return true;
         var tds = row.split(/\t/);
         output += "\r\n  <tr>";
         tds.forEach(element => {
-            output += "\r\n\   <td>" + convert(element) + "</td>";
+            output += `\r\n\   <td>${convert(element)}</td>`;
         });
 
         output += "\r\n  </tr>";
@@ -52,6 +126,7 @@
 
     htmlPre.classList.remove("prettyprinted");
     htmlPre.textContent = output;
+    setTimeout(() => window.PR.prettyPrint(), 100);
 }
 
 function showCopied() {
@@ -62,6 +137,14 @@ function showCopied() {
 
 function copyHtmlCode() {
     navigator.clipboard.writeText(document.getElementById("htmlContent").textContent).then(function() {
+        showCopied();
+    }, function() {
+        alert("Failed to copy the text to clipboard!");
+    });
+}
+
+function copyMdCode() {
+    navigator.clipboard.writeText(document.getElementById("mdContent").textContent).then(function() {
         showCopied();
     }, function() {
         alert("Failed to copy the text to clipboard!");
@@ -86,5 +169,7 @@ function clearAll() {
     const htmlPre = document.getElementById("htmlContent");
     htmlPre.textContent = "";
     document.getElementById("input").value = "";
+    const mdPre = document.getElementById("mdContent");
+    mdPre.textContent = "";
 }
 
