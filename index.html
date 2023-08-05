@@ -1,55 +1,45 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	<meta charset="utf-8" />
-	<title>Convert TSV, such as Excel or SQL Server Management Studio query results, to HTML or Markdown table</title>
-	<link href="Main.css" rel="stylesheet" />
-	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script>
-	<script src="Main.js"></script>
+  <meta charset="utf-8" />
+  <title>Convert TSV, such as Excel or SQL Server Management Studio query results, to HTML or Markdown table</title>
+  <link href="Main.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script>
+  <script src="Main.js"></script>
 </head>
+
 <body>
-	<a href="https://github.com/SanderSade/SqlManagementStudio.PasteAsHtml" id="repoLink">&lArr;&nbsp;Go to repository</a>
-	<div class="textwrapper">
-		<textarea rows="20" id="input" class="monospace"
-				  placeholder="Paste the TSV (tab-separated values) here
+  <div class="textwrapper">
+    <textarea rows="20" id="input" class="monospace" placeholder="Paste the TSV here"
+      oninput="delayedGeneration()"></textarea>
+  </div>
+  <label for="hasHeader" id="hasHeaderLegend"><input type="checkbox" name="hasHeader" id="hasHeader" checked="checked"
+      onchange="delayedGeneration()" />Output has headers</label>
+  <button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
+  <button onclick="copyMdCode()" class="button copy" id="copyMdButton">Copy Markdown</button>
+  <button onclick="copyHtmlCode()" class="button copy" id="copyCodeButton">Copy HTML</button>
+  <span id="copy-message">Copied to clipboard</span>
+  <div class="resultWrapper">
+    <input class="radio" id="one" name="group" type="radio" checked>
+    <input class="radio" id="two" name="group" type="radio">
+    <input class="radio" id="three" name="group" type="radio">
+    <div class="tabs">
+      <label class="tab" id="mdTab" for="three">Markdown code</label>
+      <label class="tab" id="htmlTab" for="two">HTML code</label>
+      <label class="tab" id="previewTab" for="one">Preview</label>
+    </div>
+    <div class="panels">
+      <div class="panel" id="previewPanel">
 
-For example, data copied from Excel sheet or SQL Server Management Studio query results are stored as TSV in the clipboard" oninput="delayedGeneration()">
-</textarea>
-	</div>
-	<label for="hasHeader" id="hasHeaderLegend"><input type="checkbox" name="hasHeader" id="hasHeader" checked="checked" onchange="delayedGeneration()" />&nbsp;Output has headers</label>
-	<br />
-	<button onclick="generateHtml();generateMd();" class="button" id="generateButton">Generate table</button>
-	&nbsp;<button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
-	<br />
-	<button onclick="copyHtml()" class="button copy" id="copyButton">Copy HTML table to clipboard</button>
-	&nbsp;<button onclick="copyHtmlCode()" class="button copy" id="copyCodeButton">Copy HTML code</button>
-	&nbsp;<button onclick="copyMdCode()" class="button copy" id="copyMdButton">Copy Markdown code</button>
-	<span id="copy-message">Copied to clipboard</span>
-
-	<br />
-
-
-	<div class="resultWrapper">
-		<input class="radio" id="one" name="group" type="radio" checked>
-		<input class="radio" id="two" name="group" type="radio">
-		<input class="radio" id="three" name="group" type="radio">
-		<div class="tabs">
-			<label class="tab" id="previewTab" for="one">Preview</label>
-			<label class="tab" id="htmlTab" for="two">HTML code</label>
-			<label class="tab" id="mdTab" for="three">Markdown code</label>
-		</div>
-		<div class="panels">
-			<div class="panel" id="previewPanel">
-				&nbsp;
-			</div>
-			<div class="panel" id="htmlPanel">
-				<pre class="prettyprint lang-html" id="htmlContent" lang="HTML">&nbsp;</pre>
-			</div>
-			<div class="panel" id="mdPanel">
-				<pre id="mdContent" lang="MD">&nbsp;;</pre>
-			</div>
-		</div>
-	</div>
+      </div>
+      <div class="panel" id="htmlPanel">
+        <pre class="prettyprint lang-html" id="htmlContent" lang="HTML"></pre>
+      </div>
+      <div class="panel" id="mdPanel">
+        <pre id="mdContent" lang="MD"></pre>
+      </div>
+    </div>
+  </div>
 </body>
-
 </html>

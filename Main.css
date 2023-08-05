@@ -1,206 +1,202 @@
 ﻿* {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    hyphens: auto;
-    margin-top: 0;
-    outline: none !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  hyphens: auto;
+  margin-top: 0;
+  outline: none !important;
 }
 
-html { background: whitesmoke; }
+html {}
 
-header { margin-bottom: 1em; }
+header {
+  margin-bottom: 1em;
+}
 
 body {
-    background-color: rgb(255, 253, 247);
-    box-shadow: 0 5px 5px #00000080;
-    font-family: Calibri, Arial, sans-serif;
-    margin: 0 auto;
-    max-width: 95%;
-    padding: 2em;
-    width: 80%;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 15px;
 }
 
-@media only screen and (max-width: 1080px) {
-    body {
-        box-shadow: none;
-        font-size-adjust: 80;
-        max-width: 100%;
-        padding: 0.3em;
-        width: 100%;
-    }
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
 }
-
-
-@media print {
-    * { background-color: #fff !important; }
-
-    body {
-        box-shadow: none !important;
-        max-width: 100% !important;
-        padding: 0.3em !important;
-        width: 100% !important;
-    }
-}
-
-.monospace { font-family: "Lucida Console", Courier, monospace; }
 
 #input {
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 0.5rem 0.8rem #00000080;
-    box-sizing: border-box;
-    font-size: large;
-    height: 30%;
-    max-width: 100%;
-    min-width: 100%;
-    padding: 1em;
-    white-space: pre;
-    width: 100%;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  height: 30%;
+  padding: 0.3em;
+  white-space: pre;
+  width: 100%;
 }
 
 .textwrapper {
-    margin: 5px 0;
-    padding: 3px;
+  margin: 5px 0;
+  padding: 3px;
 }
 
-#hasHeader, #hasHeaderLegend {
-    font-family: sans-serif;
-    margin: 15px 0 15px 0;
+#hasHeader,
+#hasHeaderLegend {
+  font-family: sans-serif;
+  margin: 15px 0 15px 0;
 }
-
-
 
 .resultWrapper {
-    align-items: center;
-    display: inline-block;
-    margin: 2% auto;
-    width: 100%;
+  align-items: center;
+  display: inline-block;
+  margin: 2% auto;
+  width: 100%;
 }
 
-.tab, .button {
-    background: #000;
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 0.5rem 0.8rem #00000080;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    margin: 2px;
-    padding: 6px 16px;
-    min-width: 220px;
+.tab,
+.button {
+  border: none;
+  background: #000;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin: 2px;
+  padding: 6px 16px;
+  min-width: 220px;
 }
 
+.button:hover,
+.tab:hover {
+  color: #efefef;
+}
 
-.button:hover, .tab:hover { color: gray; }
-
-
-.button:active, .tab:active { color: red; }
+.button:active,
+.tab:active {
+  color: #000;
+}
 
 .button.copy {
-    background: #2f4f4f;
+  background: #2f4f4f;
 }
 
 .panels {
-    background: #fffffff6;
-    border-radius: 3px;
-    box-shadow: 0 2rem 2rem #00000080;
-    min-height: 200px;
-    overflow: scroll;
-    padding: 2em;
-    width: 100%;
+  background: whitesmoke;
+  border-radius: 3px;
+  overflow: scroll;
+  padding: 0.3em;
+  width: 100%;
 }
 
 .panel {
-    animation: fadein .8s;
-    display: none;
+  animation: fadein .8s;
+  display: none;
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
+  from {
+    opacity: 0;
+  }
 
-    to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 
-.radio { display: none; }
-
-#one:checked ~ .panels #previewPanel,
-#two:checked ~ .panels #htmlPanel {
-    box-sizing: border-box;
-    display: block;
-}
-#three:checked ~ .panels #mdPanel {
-    box-sizing: border-box;
-    display: block;
+.radio {
+  display: none;
 }
 
-
-
-#one:checked ~ .tabs #previewTab,
-#two:checked ~ .tabs #htmlTab {
-    background: #fffffff6;
-    border-top: 3px solid #000;
-    color: #000;
+#one:checked~.panels #previewPanel,
+#two:checked~.panels #htmlPanel {
+  box-sizing: border-box;
+  display: block;
 }
-#three:checked ~ .tabs #mdTab {
-    background: #fffffff6;
-    border-top: 3px solid #000;
-    color: #000;
+
+#three:checked~.panels #mdPanel {
+  box-sizing: border-box;
+  display: block;
 }
 
 
-#previewPanel { white-space: pre; }
+
+#one:checked~.tabs #previewTab,
+#two:checked~.tabs #htmlTab {
+  background: #fffffff6;
+  border-top: 3px solid #000;
+  color: #000;
+}
+
+#three:checked~.tabs #mdTab {
+  background: #fffffff6;
+  border-top: 3px solid #000;
+  color: #000;
+}
+
+
+#previewPanel {
+  white-space: pre;
+}
 
 table {
-    background-color: #FFFFFF;
-    border-collapse: collapse;
-    border-color: #5774AB;
-    border-style: solid;
-    border-width: 1px;
-    color: #000000;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-color: #5774AB;
+  border-style: solid;
+  border-width: 1px;
+  color: #000000;
 }
 
-table td, table th {
-    border-color: #5774AB;
-    border-style: solid;
-    border-width: 1px;
-    padding: 5px;
+table td,
+table th {
+  border-color: #5774AB;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
 }
 
-table thead { background-color: rgb(255, 253, 247); }
+table thead {
+  background-color: rgb(255, 253, 247);
+}
 
 
 #copy-message {
-    color: black;
-    font-size: larger;
-    opacity: 0;
-    padding: 10px;
-    text-align: center;
+  color: black;
+  font-size: larger;
+  opacity: 0;
+  padding: 10px;
+  text-align: center;
 }
 
 .copy-message-animation {
-    animation: fadeOut 3s forwards;
-    animation-delay: 0;
-    opacity: 1;
+  animation: fadeOut 3s forwards;
+  animation-delay: 0;
+  opacity: 1;
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
-a, a:link, a:visited {
-    color: #B54141;
-    cursor: pointer;
-    text-decoration: none;
+a,
+a:link,
+a:visited {
+  color: #B54141;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a:hover {
-    background-color: #EEEEEE;
-    text-decoration: underline;
+  background-color: #EEEEEE;
+  text-decoration: underline;
 }
 
 #repoLink {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
