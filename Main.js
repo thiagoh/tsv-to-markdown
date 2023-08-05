@@ -1,7 +1,9 @@
 ﻿function getParsed() {
+  const value = document.getElementById('input').value;
   return {
     hasHeaders: document.querySelector('#hasHeader:checked'),
-    split: document.getElementById('input').value.split(/\r?\n/),
+    split: value.split(/\r?\n/),
+    value: value,
   };
 }
 
@@ -17,15 +19,15 @@ function delayedGeneration() {
 function generateMd() {
   function escapeMd(str) {
     str = str.replace(/\*/g, '\\*');
-    str = str.replace(/_/g, '\\_');
     str = str.replace(/}/g, '\\}');
     str = str.replace(/{/g, '\\{');
     str = str.replace(/\[/g, '\\[');
     str = str.replace(/]/g, '\\]');
     str = str.replace(/\(/g, '\\(');
     str = str.replace(/\)/g, '\\)');
-    str = str.replace(/-/g, '\\-');
-    str = str.replace(/\+/g, '\\+');
+    // str = str.replace(/_/g, '\\_');
+    // str = str.replace(/-/g, '\\-');
+    // str = str.replace(/\+/g, '\\+');
     str = str.replace(/#/g, '\\#');
     str = str.replace(/\./g, '\\.');
     str = str.replace(/!/g, '\\!');
@@ -37,10 +39,13 @@ function generateMd() {
   mdPre.textContent = '';
 
   const parsed = getParsed();
-  var output = '';
+  if (!parsed.value) {
+    return;
+  }
 
+  let output = '';
   if (parsed.hasHeaders != undefined) {
-    const tds = parsed.split[0].split(/\t/);
+    const tds = parsed.split[0].replace(/\|/g, '').split(/\t/);
     output += '| ';
     var line = '| ';
     tds.forEach(element => {
@@ -84,7 +89,7 @@ function generateHtml() {
 
   const parsed = getParsed();
 
-  var output = '<table>';
+  var output = '<table style="font-family: monospace;">';
   if (parsed.hasHeaders != undefined) {
     output += '\r\n <thead>\r\n  <tr>';
     const tds = parsed.split[0].split(/\t/);

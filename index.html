@@ -3,27 +3,32 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Convert TSV, such as Excel or SQL Server Management Studio query results, to HTML or Markdown table</title>
+  <title>Convert TSV, such as Excel to HTML or Markdown table</title>
   <link href="Main.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script>
   <script src="Main.js"></script>
 </head>
 
-<body>
+<body onload="delayedGeneration()">
+  <span>
+    <input type="checkbox" name="hasHeader" id="hasHeader" checked="checked" onchange="delayedGeneration()" />
+    <label for="hasHeader" id="hasHeaderLegend">Header</label>
+  </span>
+
   <div class="textwrapper">
     <textarea rows="20" id="input" class="monospace" placeholder="Paste the TSV here"
       oninput="delayedGeneration()"></textarea>
   </div>
-  <label for="hasHeader" id="hasHeaderLegend"><input type="checkbox" name="hasHeader" id="hasHeader" checked="checked"
-      onchange="delayedGeneration()" />Output has headers</label>
+
+
   <button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
   <button onclick="copyMdCode()" class="button copy" id="copyMdButton">Copy Markdown</button>
   <button onclick="copyHtmlCode()" class="button copy" id="copyCodeButton">Copy HTML</button>
   <span id="copy-message">Copied to clipboard</span>
   <div class="resultWrapper">
-    <input class="radio" id="one" name="group" type="radio" checked>
+    <input class="radio" id="one" name="group" type="radio">
     <input class="radio" id="two" name="group" type="radio">
-    <input class="radio" id="three" name="group" type="radio">
+    <input class="radio" id="three" name="group" type="radio" checked>
     <div class="tabs">
       <label class="tab" id="mdTab" for="three">Markdown code</label>
       <label class="tab" id="htmlTab" for="two">HTML code</label>
@@ -42,4 +47,5 @@
     </div>
   </div>
 </body>
+
 </html>

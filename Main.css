@@ -32,11 +32,6 @@ body {
   width: 100%;
 }
 
-.textwrapper {
-  margin: 5px 0;
-  padding: 3px;
-}
-
 #hasHeader,
 #hasHeaderLegend {
   font-family: sans-serif;
@@ -54,13 +49,26 @@ body {
 .button {
   border: none;
   background: #000;
-  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
   margin: 2px;
-  padding: 6px 16px;
+}
+
+.button {
+  min-width: 120px;
+  border-radius: 5px;
+  padding: 10px 6px;
+}
+
+.tab {
   min-width: 220px;
+  border-radius: 7px 7px 0 0;
+  padding: 6px 16px;
+  border-radius: 7px 7px 0 0;
+  padding: 6px 16px;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
 }
 
 .button:hover,
@@ -90,17 +98,6 @@ body {
   display: none;
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-
 .radio {
   display: none;
 }
@@ -117,27 +114,18 @@ body {
 }
 
 
-
+#three:checked~.tabs #mdTab,
 #one:checked~.tabs #previewTab,
 #two:checked~.tabs #htmlTab {
   background: #fffffff6;
-  border-top: 3px solid #000;
   color: #000;
 }
-
-#three:checked~.tabs #mdTab {
-  background: #fffffff6;
-  border-top: 3px solid #000;
-  color: #000;
-}
-
 
 #previewPanel {
   white-space: pre;
 }
 
 table {
-  background-color: #FFFFFF;
   border-collapse: collapse;
   border-color: #5774AB;
   border-style: solid;
@@ -153,11 +141,6 @@ table th {
   padding: 5px;
 }
 
-table thead {
-  background-color: rgb(255, 253, 247);
-}
-
-
 #copy-message {
   color: black;
   font-size: larger;
@@ -170,16 +153,6 @@ table thead {
   animation: fadeOut 3s forwards;
   animation-delay: 0;
   opacity: 1;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
 }
 
 a,
