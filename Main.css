@@ -142,17 +142,12 @@ table th {
 }
 
 #copy-message {
-  color: black;
-  font-size: larger;
+  color: #555;
   opacity: 0;
-  padding: 10px;
+  padding: 2px 7px;
   text-align: center;
-}
-
-.copy-message-animation {
-  animation: fadeOut 3s forwards;
-  animation-delay: 0;
-  opacity: 1;
+  border: 1px solid #666;
+  border-radius: 5px;
 }
 
 a,

@@ -1,13 +1,14 @@
-## Convert SQL Server Management Studio query results to HTML table
+## Convert Tab Separated Values to Markdown & HTML
 
 You can use this functionality at [https://thiagoh.github.io/TsvToMarkdown](https://thiagoh.github.io/TsvToMarkdown)
 
 ### Features
-* Does not send any data to backend/server, pure HTML/CSS/JS frontend functionality
+
+* **Does not send any data to server**
 * Supports table headers
 * Automatically encodes HTML critical entities to avoid script injection or display issues
 * Copy results either as HTML table code suitable for web pages or as HTML element for pasting into rich text clients
-* Works also with direct copy-paste from Excel
+* Works also with direct copy-paste from spreadsheet applications such as MS Excel
 
 ### Markdown code generation
 

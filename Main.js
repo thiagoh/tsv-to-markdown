@@ -121,13 +121,16 @@ function generateHtml() {
 
   htmlPre.classList.remove('prettyprinted');
   htmlPre.textContent = output;
-  setTimeout(() => window.PR.prettyPrint(), 100);
+  // setTimeout(() => window.PR.prettyPrint(), 100);
 }
 
 function showCopied() {
-  // var c = document.getElementById('copy-message');
-  // c.classList.remove('copy-message-animation');
-  // setTimeout(() => c.classList.add('copy-message-animation'), 100);
+  if (showCopied.handler) {
+    clearTimeout(showCopied.handler);
+  }
+  const c = document.getElementById('copy-message');
+  c.style.opacity = 1;
+  showCopied.handler = setTimeout(() => (c.style.opacity = 0), 1000);
 }
 
 function copyHtmlCode() {

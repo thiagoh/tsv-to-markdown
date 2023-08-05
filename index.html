@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Convert TSV, such as Excel to HTML or Markdown table</title>
+  <title>Convert TSV to Markdown or HTML</title>
   <link href="Main.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autorun=false"></script> -->
   <script src="Main.js"></script>
 </head>
 
@@ -20,11 +20,10 @@
       oninput="delayedGeneration()"></textarea>
   </div>
 
-
   <button onclick="clearAll()" class="button" id="clearAll">Clear all</button>
   <button onclick="copyMdCode()" class="button copy" id="copyMdButton">Copy Markdown</button>
   <button onclick="copyHtmlCode()" class="button copy" id="copyCodeButton">Copy HTML</button>
-  <span id="copy-message">Copied to clipboard</span>
+  <span id="copy-message">copied to clipboard</span>
   <div class="resultWrapper">
     <input class="radio" id="one" name="group" type="radio">
     <input class="radio" id="two" name="group" type="radio">
